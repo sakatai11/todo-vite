@@ -192,7 +192,7 @@ function BaseTop({todosData, listsData}:DataProps) {
 			<Push
 				clickOption={{
 					addTodo: addTodo,
-					setInput: (inputValue) => setInput(inputValue),
+					setInput: setInput,
 					setEditId: setEditId,
 					input: input,
 				}}
