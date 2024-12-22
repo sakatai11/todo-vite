@@ -231,7 +231,7 @@ function BaseTop({todosData, listsData}:DataProps) {
 				>
 					{lists.map((statusPull) => {
 						const filteredTrueTodos = todos.filter(
-							(todo) => statusPull. === todo.status && todo.bool
+							(todo) => statusPull.category === todo.status && todo.bool
 						);
 						const filteredFalseTodos = todos.filter(
 							(todo) => statusPull.category === todo.status && !todo.bool
