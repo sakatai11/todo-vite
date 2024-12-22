@@ -138,17 +138,17 @@ function BaseTop({todosData, listsData}:DataProps) {
 
 	// 選択状態を切り替える関数
 	const toggleSelected = async (id: string) => {
-		setTodos((prevTodos) => {
-			// trueの場合、
-			const updatedTodos = prevTodos.map((todo) =>
-				todo.id === id ? { ...todo, bool: !todo.bool } : todo
-			);
-			return updatedTodos.sort((a, b) => Number(b.bool) - Number(a.bool));
-		});
 
 		// 更新するboolの値を取得
 		const todoToUpdate = todos.find((todo) => todo.id === id);
 		if (todoToUpdate) {
+			setTodos((prevTodos) => {
+				// trueの場合、
+				const updatedTodos = prevTodos.map((todo) =>
+					todo.id === id ? { ...todo, bool: !todo.bool } : todo
+				);
+				return updatedTodos.sort((a, b) => Number(b.bool) - Number(a.bool));
+			});
 			await updateDoc(doc(db, "todos", id), { bool: !todoToUpdate.bool });
 		}
 	};
@@ -231,7 +231,7 @@ function BaseTop({todosData, listsData}:DataProps) {
 				>
 					{lists.map((statusPull) => {
 						const filteredTrueTodos = todos.filter(
-							(todo) => statusPull.category === todo.status && todo.bool
+							(todo) => statusPull. === todo.status && todo.bool
 						);
 						const filteredFalseTodos = todos.filter(
 							(todo) => statusPull.category === todo.status && !todo.bool
